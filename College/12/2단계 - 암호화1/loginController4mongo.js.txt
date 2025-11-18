@@ -1,0 +1,30 @@
+const asyncHandler = require("express-async-handler");
+const crypto = require('crypto'); // npm i crypto
+const User = require("../models/userModel");
+
+//@desc Get login page
+//@route GET /
+const getLogin = (req, res) => {
+    // loginController-1.js
+    // res.status(200).send("home");
+    res.render("home");
+};
+
+//@desc Login user
+//@route POST /
+const loginUser = asyncHandler(async (req, res) => {
+    // loginController-2.js
+    const { username, password } = req.body;
+    // pw1 : 사용자가 입력한 비번을 암호화 한것
+    // pw2 : 사용자가 처음 등록했을때 비번을 암호화 한것
+    const pw1 = crypto.createHash('sha256').update(password).digest('hex');
+    const pw2 = crypto.createHash('sha256').update('1234').digest('hex');
+
+    if (username === "admin" && pw1 === pw2) {
+        res.send("Login success");
+    } else {
+        res.send("Login failed");
+    }
+});
+
+module.exports = { getLogin, loginUser };
