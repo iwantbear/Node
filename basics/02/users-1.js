@@ -1,3 +1,3 @@
-const user1 = "Kim";
-const user2 = "Lee";
-const user3 = "Choi";
+const user = "홍길동";
+
+module.exports = user;

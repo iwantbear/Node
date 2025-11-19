@@ -1,3 +1,4 @@
+// 함수 앞에 async를 붙이면 그 안에서 await를 붙여 비동기 처리 가능
 async function init() {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");  // 서버에서 가져오기
   const users = await response.json();  // 가져온 결과를 users에 저장
