@@ -6,6 +6,8 @@
 // POST 요청이 있을 떄 JSON 형식의 자료를 서버로 보낸다고 가정
 const express = require("express");
 const router = express.Router();
+const spawn = require('child_process').spawn;
+const iconv = require('iconv-lite');
 
 router
   .route("/")
