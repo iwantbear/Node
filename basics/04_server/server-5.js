@@ -1,4 +1,8 @@
 // 라우팅 연습하기
+// Get : 서버/DB 에서 상품 정보를 가져옴
+// Post : 서버에다 상품 정보를 올릴때 
+// Put : 상품 정보를 업데이트 
+// Delete : 상품 정보를 지우기 
 
 const http = require("http");
 
