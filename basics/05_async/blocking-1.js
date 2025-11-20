@@ -1,4 +1,5 @@
 // 블로킹 I/O
+// 코드 실행을 중간에 막는것
 
 const fs = require("fs");
 
