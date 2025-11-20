@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS node_db;
 
-USE node_db;
+USE test;
 
 CREATE TABLE IF NOT EXISTS Contacts (
   id int(12) NOT NULL AUTO_INCREMENT,

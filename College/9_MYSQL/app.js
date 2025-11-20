@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
-//const dbConnect = require("./config/dbConnect4mongo");
+const dbConnect = require("./dbConnect4mongo");
 
 const port = 3000;
   
-//dbConnect();
+dbConnect();
 
 app.get("/", (req, res) => {
   res.status(200).send("Hello Node!");
@@ -18,5 +18,5 @@ app.use("/contacts", require("./routes/contactRoutes"));
 
 
 app.listen(port, () => {
-  console.log(`${port}¹ø Æ÷Æ®¿¡¼­ ¼­¹ö ½ÇÇà Áß`);
+  console.log(`${port}ë²ˆ í¬íŠ¸ì—ì„œ ì„œë²„ ì‹¤í–‰ ì¤‘`);
 }); 

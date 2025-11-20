@@ -11,7 +11,7 @@ const contactSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      required: [true, "ÀüÈ­¹øÈ£´Â ²À ±âÀÔÇØ ÁÖ¼¼¿ä."],
+      required: [true, "ì „í™”ë²ˆí˜¸ëŠ” ê¼­ ê¸°ìž…í•´ ì£¼ì„¸ìš”."],
     },
     office: {
       type: String,

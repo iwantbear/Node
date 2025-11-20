@@ -5,7 +5,7 @@ const Contact = require("../models/contactModel");
 // @desc Get all contacts
 // @route GET /contacts
 const getAllContacts = asyncHandler(async (req, res) => {
-  // ÀüÃ¼ ¿¬¶ôÃ³ º¸±â
+  // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½
   // res.status(200).send("Contacts Page");
   const contacts = await Contact.find();
   res.status(200).send(contacts);
@@ -14,11 +14,11 @@ const getAllContacts = asyncHandler(async (req, res) => {
 // @desc Create a contact
 // @route POST /contacts
 const createContact = asyncHandler(async (req, res) => {
-  // »õ ¿¬¶ôÃ³ Ãß°¡ÇÏ±â
+  // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ß°ï¿½ï¿½Ï±ï¿½
   //console.log(req.body);
   const { name, email, phone } = req.body;
   if (!name || !email || !phone) {
-    return res.status(400).send("ÇÊ¼ö°ªÀÌ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+    return res.status(400).send("í•„ìˆ˜ê°’ì´ ìž…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
   }
 
   const contact = await Contact.create({
@@ -35,7 +35,7 @@ const createContact = asyncHandler(async (req, res) => {
 // @desc Get contact
 // @route GET /contacts/:id
 const getContact = asyncHandler(async (req, res) => {
-  // ¿¬¶ôÃ³ »ó¼¼ º¸±â
+  // ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
   // res.status(200).send(`View Contact for ID: ${req.params.id}`);
   const contact = await Contact.findById(req.params.id);
   res.status(200).send(contact);
@@ -44,7 +44,7 @@ const getContact = asyncHandler(async (req, res) => {
 // @desc Update contact
 // @route PUT /contacts/:id
 const updateContact = asyncHandler(async (req, res) => {
-  // ¿¬¶ôÃ³ ¼öÁ¤ÇÏ±â
+  // ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
   // res.status(200).send(`Update Contact for ID: ${req.params.id}`);
   const id = req.params.id;
   const { name, email, phone } = req.body;
@@ -54,12 +54,12 @@ const updateContact = asyncHandler(async (req, res) => {
     throw new Error("Contact not found");
   }
 
-  // ¼öÁ¤
+  // ï¿½ï¿½ï¿½ï¿½
   contact.name = name;
   contact.email = email;
   contact.phone = phone;
 
-  // ÀúÀå
+  // ï¿½ï¿½ï¿½ï¿½
   contact.save();
 
   res.status(200).json(contact);
@@ -68,7 +68,7 @@ const updateContact = asyncHandler(async (req, res) => {
 // @desc Delete contact
 // @route DELETE /contacts/:id
 const deleteContact = asyncHandler(async (req, res) => {
-  // ¿¬¶ôÃ³ »èÁ¦ÇÏ±â
+  // ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
   // res.status(200).send(`Delete Contact for ID: ${req.params.id}`);
   const contact = await Contact.findById(req.params.id);
   if (!contact) {
