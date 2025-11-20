@@ -31,11 +31,19 @@ router
 router
   .route("/:id")
   .get((req, res) => {
+    const result = {
+        '2': { 'name': '이순신', 'email': 'lees@def.com', 'phone': '0104567' }
+    }
     // 연락처 상세보기
     res.status(200).send(`View Contact for ID: ${req.params.id}`);
   })
   .put((req, res) => {
     // 연락처 수정하기
+    console.log(req.body);
+    const { name, email, phone } = req.body;
+    if (!name || !email || !phone) {
+      return res.status(400).send("필수값이 입력되지 않았습니다.");
+    }
     res.status(200).send(`Update Contact for ID: ${req.params.id}`);
   })
   .delete((req, res) => {
