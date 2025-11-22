@@ -8,8 +8,8 @@ const {
   updateContact,
   deleteContact,
   addContactForm,
-} = require("../controllers/contactController4mongo");
-//} = require("../controllers/contactController4mysql");
+//} = require("../controllers/contactController4mongo");
+} = require("../controllers/contactController4mysql");
 
 // http://localhost:3000/contacts/3
 router.route("/").get(getAllContacts);
