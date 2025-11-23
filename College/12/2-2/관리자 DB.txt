@@ -1,0 +1,12 @@
+
+USE gachon_db;
+
+CREATE TABLE IF NOT EXISTS Users (
+  username VARCHAR(80) NOT NULL,
+  password VARCHAR(80) NOT NULL,
+  PRIMARY KEY(username)
+)charset=utf8;
+
+INSERT INTO Users (username, password) VALUES ('admin', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4');
+
+SELECT username, password FROM Users;
