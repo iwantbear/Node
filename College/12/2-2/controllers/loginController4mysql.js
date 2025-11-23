@@ -15,18 +15,18 @@ const getLogin = (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   // loginController-2.js
   const { username, password } = req.body;
-  // pw1 : »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ºñ¹øÀ» ¾ÏÈ£È­ ÇÑ°Í
-  // pw2 : »ç¿ëÀÚ°¡ Ã³À½ µî·ÏÇßÀ»¶§ ºñ¹øÀ» ¾ÏÈ£È­ ÇÑ°Í
+  // pw1 : ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£È­ ï¿½Ñ°ï¿½
+  // pw2 : ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£È­ ï¿½Ñ°ï¿½
   const pw1 = crypto.createHash('sha256').update(password).digest('hex');
   // const pw2 = crypto.createHash('sha256').update('1234').digest('hex');
 
   dbConnect.query('SELECT username, password FROM Users WHERE username = ? AND password = ?', [username, pw1], function(error, results) {
     if (error) throw new Error('Can not log in');
-    if (results.length > 0) {       // db¿¡¼­ÀÇ ¹İÈ¯°ªÀÌ ÀÖÀ¸¸é ·Î±×ÀÎ ¼º°ø
+    if (results.length > 0) {       // dbï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
       //console.log(results);
       res.redirect("/contacts"); 
     } else {        
-      res.status(401).json({ message: "¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇÏ±â ¹Ù¶ø´Ï´Ù." });    
+      res.status(401).json({ message: "ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•˜ê¸° ë°”ëë‹ˆë‹¤." });    
     }            
   });
 });

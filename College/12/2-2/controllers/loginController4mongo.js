@@ -5,30 +5,34 @@ const User = require("../models/userModel");
 //@desc Get login page
 //@route GET /
 const getLogin = (req, res) => {
-    // loginController-1.js
-    // res.status(200).send("home");
-    res.render("home");
+  // loginController-1.js
+  // res.status(200).send("home");
+  res.render("home");
 };
 
 //@desc Login user
 //@route POST /
 const loginUser = asyncHandler(async (req, res) => {
-    // loginController-2.js
-    const { username, password } = req.body;
-    // pw1 : ����ڰ� �Է��� ����� ��ȣȭ �Ѱ�
-    // pw2 : ����ڰ� ó�� ��������� ����� ��ȣȭ �Ѱ�
-    const pw1 = crypto.createHash('sha256').update(password).digest('hex');
-    const pw2 = crypto.createHash('sha256').update('1234').digest('hex');
+  // loginController-2.js
+  const { username, password } = req.body;
+  // pw1 : ����ڰ� �Է��� ����� ��ȣȭ �Ѱ�
+  // pw2 : ����ڰ� ó�� ��������� ����� ��ȣȭ �Ѱ�
+  const pw1 = crypto.createHash('sha256').update(password).digest('hex');
+  // const pw2 = crypto.createHash('sha256').update('1234').digest('hex');
 
-    console.log(pw1)
+  const user = await User.findOne({ username });
 
-    if (username === "admin" && pw1 === pw2) {
-        res.send("Login success");
-    } else {
-        res.send("Login failed");
-    }
+  if (!user) {
+    return res.status(401).json({ message: "아이디 또는 비밀번호를 확인하기 바랍니다." });
+  }
+
+  if (pw1 === user.password) {
+    res.redirect("/contacts");
+  }
+  else {
+    res.status(401).json({ message: "아이디 또는 비밀번호를 확인하기 바랍니다." });
+  }
 });
-
 
 //@desc Register Page
 //@route GET /register
@@ -51,4 +55,4 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { getLogin, loginUser, getRegister, registerUser };
+module.exports = { getRegister, getLogin, loginUser, registerUser };
