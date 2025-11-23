@@ -24,5 +24,5 @@ app.use("/contacts", require("./routes/contactRoutes"));
 
 
 app.listen(port, () => {
-  console.log(`${port}¹ø Æ÷Æ®¿¡¼­ ¼­¹ö ½ÇÇà Áß`);
+  console.log(`${port}ë²ˆ í¬íŠ¸ì—ì„œ ì„œë²„ ì‹¤í–‰ ì¤‘`);
 }); 
