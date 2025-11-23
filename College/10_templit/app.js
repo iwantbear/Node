@@ -1,26 +1,23 @@
 const express = require("express");
+const dbConnect = require("./config/dbConnect4mongo");
 const app = express();
-//const dbConnect = require("./config/dbConnect4mongo");
 
-const port = 3000;  
-//dbConnect();
+const port = 3000;
+dbConnect();
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
-app.engine('html', require('ejs').renderFile); 
-app.use(express.static("./public"));
+app.engine('html', require('ejs').renderFile);
+app.use(express.static("./public"))
 
 app.get("/", (req, res) => {
   res.status(200).send("Hello Node!");
 });
- 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// http://localhost:3000/contacts/3
 app.use("/contacts", require("./routes/contactRoutes"));
 
-
 app.listen(port, () => {
-  console.log(`${port}¹ø Æ÷Æ®¿¡¼­ ¼­¹ö ½ÇÇà Áß`);
-}); 
+  console.log(`${port}ë²ˆ í¬íŠ¸ì—ì„œ ì„œë²„ ì‹¤í–‰ ì¤‘`);
+});

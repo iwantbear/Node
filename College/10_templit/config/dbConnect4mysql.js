@@ -5,7 +5,7 @@ const dbConnect = mysql.createConnection({
     host: 'localhost',
     user: process.env.DB_CONNECT_ID,
     password: process.env.DB_CONNECT_PW,
-    database: 'node_db'
+    database: 'test'
 });
 
 dbConnect.connect();

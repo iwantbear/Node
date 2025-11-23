@@ -4,11 +4,11 @@ const dbConnect = require("../config/dbConnect4mysql");
 // @desc Get all contacts
 // @route GET /contacts
 const getAllContacts = asyncHandler(async (req, res) => { 
-  // ÀüÃ¼ ¿¬¶ôÃ³ º¸±â
-  console.log('ÀüÃ¼ ¿¬¶ôÃ³ º¸±â');
+  // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½
+  console.log('ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½');
 
   dbConnect.query('SELECT id, name, email, phone FROM Contacts', function(error, results, fields) {
-    if (error) console.error(JSON.stringify(err)); // throw new Error("All Contacts not read");
+    if (error) console.error(JSON.stringify(error)); // throw new Error("All Contacts not read");
     if (results.length > 0) {
       console.log(results);
       console.log(fields);
@@ -24,12 +24,12 @@ const getAllContacts = asyncHandler(async (req, res) => {
 // @desc Create a contact
 // @route POST /contacts
 const createContact = asyncHandler(async (req, res) => {
-  // »õ ¿¬¶ôÃ³ Ãß°¡ÇÏ±â
-  console.log('»õ ¿¬¶ôÃ³ Ãß°¡ÇÏ±â');
+  // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ß°ï¿½ï¿½Ï±ï¿½
+  console.log('ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ß°ï¿½ï¿½Ï±ï¿½');
   console.log(req.body);
   const { name, email, phone } = req.body;
   if (!name || !email || !phone) {
-    return res.status(400).send("ÇÊ¼ö°ªÀÌ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+    return res.status(400).send("ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·Âµï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
   }
 
   dbConnect.execute('INSERT INTO Contacts (name, email, phone) VALUES (?, ?, ?)', [name, email, phone], function(error, results) {
@@ -43,14 +43,14 @@ const createContact = asyncHandler(async (req, res) => {
 // @desc Get contact
 // @route GET /contacts/:id
 const getContact = asyncHandler(async (req, res) => {
-  // Æ¯Á¤ ¿¬¶ôÃ³ º¸±â
-  console.log('Æ¯Á¤ ¿¬¶ôÃ³ º¸±â');
+  // Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½
+  console.log('Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½');
   console.log(req.params.id);
   const id = req.params.id;
 
   dbConnect.query('SELECT id, name, email, phone FROM Contacts WHERE id = ?', [id], function(error, results) {
     if (error) throw new Error('Contact not read');
-    if (results.length > 0) {       // db¿¡¼­ÀÇ ¹ÝÈ¯°ªÀÌ ÀÖÀ¸¸é ·Î±×ÀÎ ¼º°ø
+    if (results.length > 0) {       // dbï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
       console.log(results);
       res.status(200).send(results);
     } else {        
@@ -63,7 +63,7 @@ const getContact = asyncHandler(async (req, res) => {
 // @desc Update contact
 // @route PUT /contacts/:id
 const updateContact = asyncHandler(async (req, res) => {
-  // Æ¯Á¤ ¿¬¶ôÃ³ ¾÷µ¥ÀÌÆ®
+  // Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
   const id = req.params.id;
   const { name, email, phone } = req.body;
 
@@ -78,7 +78,7 @@ const updateContact = asyncHandler(async (req, res) => {
 // @desc Delete contact
 // @route DELETE /contacts/:id
 const deleteContact = asyncHandler(async (req, res) => {
-  // Æ¯Á¤ ¿¬¶ôÃ³ »èÁ¦
+  // Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½
   const id = req.params.id;
   const { name, email, phone } = req.body;
 
