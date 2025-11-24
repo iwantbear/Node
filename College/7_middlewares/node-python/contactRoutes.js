@@ -1,27 +1,27 @@
 const express = require("express");
 const router = express.Router();
 const spawn = require('child_process').spawn;
-const iconv = require('iconv-lite'); // ÆÄÀÌ½ã ÇÑ±Û±úÁü ¹®Á¦ ÇØ°á
+const iconv = require('iconv-lite'); // ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½Ñ±Û±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø°ï¿½
 
 router
   .route("/")
-  // ¸ðµç ¿¬¶ôÃ³ °¡Á®¿À±â
+  // ëª¨ë“  ì—°ë½ì²˜ ê°€ì ¸ì˜¤ê¸°
   .get((req, res) => {
     // res.status(200).send("Contacts Page");
     const result = {
-	    '1': { 'name': 'È«±æµ¿', 'email': 'hong@abc.com', 'phone': '0101234' },
-	    '2': { 'name': 'ÀÌ¼ø½Å', 'email': 'lees@def.com', 'phone': '0104567' },
-	    '3': { 'name': '°­°¨Âù', 'email': 'kang@ghp.com', 'phone': '0106789' }
+	    '1': { 'name': 'í™ê¸¸ë™', 'email': 'hong@abc.com', 'phone': '0101234' },
+	    '2': { 'name': 'ì´ìˆœì‹ ', 'email': 'lees@def.com', 'phone': '0104567' },
+	    '3': { 'name': 'ê°•ê°ì°¬', 'email': 'kang@ghp.com', 'phone': '0106789' }
     }
 
     res.status(200).send(result);
   })
   .post((req, res) => {
-    // »õ ¿¬¶ôÃ³ Ãß°¡ÇÏ±â
+    // ìƒˆ ì—°ë½ì²˜ ì¶”ê°€í•˜ê¸°
     console.log(req.body);
     const { name, email, phone } = req.body;
     if (!name || !email || !phone) {
-      return res.status(400).send("ÇÊ¼ö°ªÀÌ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+      return res.status(400).send("í•„ìˆ˜ê°’ì´ ìž…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
     }
     res.status(201).send("Create Contacts");    
   });
@@ -29,14 +29,14 @@ router
 router
   .route("/:id")
   .get((req, res) => {
-    // ¿¬¶ôÃ³ »ó¼¼º¸±â
+    // ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ó¼¼ºï¿½ï¿½ï¿½
     //const result = {
-	  //  '2': { 'name': 'ÀÌ¼ø½Å', 'email': 'lees@def.com', 'phone': '0104567' }
+	  //  '2': { 'name': 'ï¿½Ì¼ï¿½ï¿½ï¿½', 'email': 'lees@def.com', 'phone': '0104567' }
     //}
 
-    // npm install iconv : ÇÑ±Û±úÁü ¹®Á¦
+    // npm install iconv : ï¿½Ñ±Û±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     // const result = spawn('py', [__dirname + '\\pythontest.py']);
-    const result = spawn('py', [__dirname + '\\pythontest.py', 'Mike', '30']);
+    const result = spawn('python', [__dirname + '/pythontest.py', 'Mike', '30']);
     result.stdout.on('data', (result)=>{ 
       let data = iconv.decode(result, 'euc-kr');
       console.log(data);
@@ -54,16 +54,16 @@ router
     //res.status(200).send(result);
   })
   .put((req, res) => {
-    // ¿¬¶ôÃ³ ¼öÁ¤ÇÏ±â
+    // ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
     console.log(req.body);
     const { name, email, phone } = req.body;
     if (!name || !email || !phone) {
-      return res.status(400).send("ÇÊ¼ö°ªÀÌ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+      return res.status(400).send("ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·Âµï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
     }
     res.status(200).send(`Update Contact for ID: ${req.params.id}`);
   })
   .delete((req, res) => {
-    // ¿¬¶ôÃ³ »èÁ¦ÇÏ±â
+    // ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
     res.status(200).send(`Delete Contact for ID: ${req.params.id}`);
   });
 
