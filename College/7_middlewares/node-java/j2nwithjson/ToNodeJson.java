@@ -16,7 +16,7 @@ public class ToNodeJson {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int version = 1; // 1: Get, 2: Post, 3: Put, 4: Delete	
+		int version = 4; // 1: Get, 2: Post, 3: Put, 4: Delete	
 		
 		if (version == 1) {         // Get
 			String msgGet = getRESTbyGET("http://localhost:3000/contacts/2");		
