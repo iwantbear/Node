@@ -1,0 +1,8 @@
+
+// @desc View add contact form
+// @route GET /contacts/add
+const addContactForm = (req, res) => {
+  console.log("req.username : " + req.username);
+  res.render("add");
+};
+
